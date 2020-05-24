@@ -23,17 +23,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run tests
-        run: |
-          if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build . --file Dockerfile
-          fi
+      - name: install docker-slim and test
+        
+        run:  |
+          curl -s https://downloads.dockerslim.com/releases/1.29.0/dist_linux.tar.gz | tar xvz -C /tmp
+          chmod 711 /tmp/dist_linux/docker-slim
+          docker pull node
+          /tmp/dist_linux/docker-slim build node
+#       - name: Run tests
+#         run: |
+#           if [ -f docker-compose.test.yml ]; then
+#             docker-compose --file docker-compose.test.yml build
+#             docker-compose --file docker-compose.test.yml run sut
+#           else
+#             docker build . --file Dockerfile
+#           fi
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -47,13 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: install docker-slim and test
-        
-        run:  |
-          curl -s https://downloads.dockerslim.com/releases/1.29.0/dist_linux.tar.gz | tar xvz -C /tmp
-          chmod 711 /tmp/dist_linux/docker-slim
-          docker pull node
-          /tmp/dist_linux/docker-slim build node
+
           
 
 #       - name: Build image
