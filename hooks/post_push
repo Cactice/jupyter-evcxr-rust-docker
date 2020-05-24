@@ -4,6 +4,6 @@ curl -s https://downloads.dockerslim.com/releases/1.29.0/dist_linux.tar.gz | tar
 chmod 711 /tmp/dist_linux/docker-slim
 /tmp/dist_linux/docker-slim build ${DOCKER_REPO:-${IMAGE_NAME}}
 export REPO=${DOCKER_REPO:-${IMAGE_ID}}
-export VER=${SOURCE_COMMIT:-${VERSION}:latest}-slim
+export VER=${SOURCE_COMMIT:-${VERSION:-latest}}-slim
 docker tag $IMAGE_NAME.slim $REPO:$VER
 docker push $REPO:$VER
