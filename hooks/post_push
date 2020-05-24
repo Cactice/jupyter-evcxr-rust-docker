@@ -8,8 +8,9 @@ echo IMAGE_ID=$IMAGE_ID
 echo VERSION=$VERSION
 echo DOCKER_REPO=$DOCKER_REPO
 echo SOURCE_COMMIT=$SOURCE_COMMIT
-
 export REPO=${DOCKER_REPO:-${IMAGE_ID}}
 export VER=${SOURCE_COMMIT:-${VERSION:-latest}}-slim
+echo REPO=$REPO
+echo VER=$VER
 docker tag $IMAGE_NAME.slim $REPO:$VER
 docker push $REPO:$VER
