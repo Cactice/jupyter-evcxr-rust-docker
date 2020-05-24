@@ -12,3 +12,4 @@ services:
       - 8888:8888
     volumes:
       - ${PWD}/work:/home/jovyan/work
+    command: start.sh jupyter lab --NotebookApp.token=''
