@@ -75,7 +75,7 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
           
-      - name: perform docker-slim and push
+      - name: Perform docker-slim and push
         run: |
-          chmod 711 ./hooks/post_build
-          ./hooks/post_build
+          chmod 711 ./hooks/post_push
+          ./hooks/post_push
