@@ -47,8 +47,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-#       - name: Build image
-#         run: docker build . --file Dockerfile --tag $IMAGE_NAME
+      - name: Build image
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
@@ -72,20 +72,8 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
 
-          #docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          #docker push $IMAGE_ID:$VERSION
-          
-          # test bin bash
-
-          echo VERSION=$VERSION
-          echo DOCKER_REPO=$DOCKER_REPO
-          echo SOURCE_COMMIT=$SOURCE_COMMIT
-
-          export REPO=${DOCKER_REPO:-${IMAGE_ID}}
-          export VER=${SOURCE_COMMIT:-${VERSION:-latest}}-slim
-
-          echo REPO=$REPO
-          echo VER=$VER
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
 
           # Perform docker-slim and push
           chmod 711 ./hooks/post_push
