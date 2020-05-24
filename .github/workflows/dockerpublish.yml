@@ -46,17 +46,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
-
-          
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
-        
-      - name: install docker-slim and test
-        run: |
-          chmod 711 ./hooks/post_build
-          ./hooks/post_build
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
@@ -82,3 +74,8 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+          
+      - name: perform docker-slim and push
+        run: |
+          chmod 711 ./hooks/post_build
+          ./hooks/post_build
