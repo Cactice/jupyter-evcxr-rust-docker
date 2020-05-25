@@ -2,7 +2,10 @@
 Runs jupyter labs with rust in docker using evcxr
 
 ![Docker](https://github.com/Cactice/jupyter-evcxr-rust-docker/workflows/Docker/badge.svg)
-![Docker Build Status](https://img.shields.io/docker/build/cactice/jupyter-evcxr-rust)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/cactice/jupyter-evcxr-rust)
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/cactice/jupyter-evcxr-rust)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cactice/jupyter-evcxr-rust)
+![Docker Pulls](https://img.shields.io/docker/pulls/cactice/jupyter-evcxr-rust)
 
 # Usage
 If all you need is to execute then use the `slim` version
