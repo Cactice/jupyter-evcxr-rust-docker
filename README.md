@@ -9,8 +9,8 @@ Runs jupyter labs with rust in docker using evcxr
 ![Docker Pulls](https://img.shields.io/docker/pulls/cactice/jupyter-evcxr-rust)
 
 # Usage
-If all you need is to execute then use the `slim` version
-`docker pull cactice/jupyter-evcxr-rust:latest-slim`
 
 If you want to make your own docker file use the normal version
 `FROM cactice/jupyter-evcxr-rust-docker:latest`
+
+Slim is currently broken
