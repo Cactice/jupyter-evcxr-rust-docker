@@ -6,7 +6,7 @@ Runs jupyter labs with rust in docker using evcxr
 
 # Usage
 If all you need is to execute then use the `slim` version
-`docker pull docker.pkg.github.com/cactice/jupyter-evcxr-rust-docker/image:latest-slim`
+`docker pull cactice/jupyter-evcxr-rust:latest-slim`
 
 If you want to make your own docker file use the normal version
-`FROM docker.pkg.github.com/cactice/jupyter-evcxr-rust-docker/image:latest`
+`FROM cactice/jupyter-evcxr-rust-docker:latest`
