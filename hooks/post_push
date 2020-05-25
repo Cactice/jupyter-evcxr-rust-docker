@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export BUILD_IMAGE=${$(sed 's#^[^/]*/##' <<< $DOCKER_REPO):-${IMAGE_NAME}}
+export DOCKER_REPO_LOCAL=$(sed 's#^[^/]*/##' <<< $DOCKER_REPO)
+export BUILD_IMAGE=${DOCKER_REPO_LOCAL:-${IMAGE_NAME}}
 curl -s https://downloads.dockerslim.com/releases/1.29.0/dist_linux.tar.gz | tar xvz -C /tmp
 chmod 711 /tmp/dist_linux/docker-slim
 /tmp/dist_linux/docker-slim build $BUILD_IMAGE
